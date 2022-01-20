@@ -1,0 +1,20 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    app:
+        build: docker
+        image: sail-8.1/app
+        ports:
+            - 80:80
+        volumes:
+            - '.:/var/www/html/demo-docker-server'
+        networks:
+            - sail
+        depends_on:
+            - mysql
+networks:
+    sail:
+        driver: bridge
+volumes:
+    sail-mysql:
+        driver: local
